@@ -103,7 +103,10 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onClose, isSuperAdmin, 
   const [roleFilter, setRoleFilter] = useState<'all' | 'admin' | 'co-owner' | 'owner' | 'user' | 'donator' | 'tester'>('all');
 
   useEffect(() => {
-    if (activeTab === 'analytics' || activeTab === 'upload') return;
+    if (activeTab === 'analytics' || activeTab === 'upload') {
+      setIsLoading(false);
+      return;
+    }
 
     setIsLoading(true);
     setError(null); // Clear previous errors
